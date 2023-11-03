@@ -15,7 +15,7 @@ public interface StudentsRepository extends CrudRepository<Students, Integer> {
             "FROM Students s " +
             "JOIN s.grades g " +
             "GROUP BY s.id " +
-            "HAVING AVG(g.grade) >= 4.0")
+            "HAVING AVG(g.grade) >= :minGrade")
     List<StudentInfoDTO> findStudentsInfoWithAverageGradeGreaterThanOrEqual(@Param("minGrade") double minGrade);
 
     Students findByName(String name);
